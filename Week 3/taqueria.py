@@ -11,18 +11,18 @@ def main():
         "Tortilla Salad": 8.00
     }
 
-    total = 0  
-    try:
-        while True:
+    total = 0
+    while True:
+        try:
             user = input("item: ").title()
-            if user == '':
-                break
             cost = data.get(user)
-            if cost is not None:
-                total += cost
-    except KeyboardInterrupt:
-        print("Loop interrupted by Ctrl + D")
-    print(f"Total: ${total:.2f}")
+            total += cost
+            print(f"Total: ${total:.2f}")
+        except EOFError:
+            print("")
+            break
+        except TypeError:
+            continue
 
 if __name__ == "__main__":
     main()
